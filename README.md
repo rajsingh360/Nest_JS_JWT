@@ -1,9 +1,6 @@
 # Nest_JS_JWT
 <b> Nest_JS_JWT Auth </b></br>
 ------------------------------------------------------------------------------------
-<b>Installation:-</b></br>
-Create a .env file from .env.example file and fill in the information
-------------------------------------------------------------------------------------
 <b>Run the following command:</b> </br>
 <code> yarn </code></br>
 <b>Running the app</b></br>
