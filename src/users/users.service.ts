@@ -6,7 +6,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 @Injectable()
 export class UsersService {
   async create(createUserDto: CreateUserDto) {
-    const user = User.create(createUserDto);
+    const user = new User();
+    //const user = User.create(createUserDto);
     await user.save();
 
     delete user.password;
@@ -20,7 +21,7 @@ export class UsersService {
     return user;
   }
 
-  async findById(id: number) {
+  async findById(id: any) {
     return await User.findOne(id);
   }
 

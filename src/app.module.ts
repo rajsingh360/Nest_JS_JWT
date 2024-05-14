@@ -9,8 +9,11 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 
 import { User } from './users/user.entity';
+import { CategoryModule } from './category/category.module';
+import { CategoryEntity } from './category/category.entity';
+import { SubCategoryEntity } from './category/sub-category.entity';
 
-const entities = [User];
+const entities = [User, CategoryEntity, SubCategoryEntity];
 
 @Module({
   imports: [
@@ -27,6 +30,7 @@ const entities = [User];
       entities: entities,
       synchronize: true,
     }),
+    CategoryModule,
     UsersModule,
     AuthModule,
   ],
