@@ -1,4 +1,5 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsEmail, IsEnum, IsInt, IsNotEmpty, IsOptional } from 'class-validator';
+import { isExists } from 'src/core/custom-validator/is_exist';
 import { isUnique } from 'src/core/custom-validator/is_unique';
 
 export enum StatusType {
@@ -8,6 +9,11 @@ export enum StatusType {
 }
 
 export class UpdateTemplateDto {
+
+  @IsNotEmpty()
+  // @IsInt()
+  // @isExists({connectionName: 'db-name', tableName: 'template', column: 'id'})
+  id: number;
 
   @IsNotEmpty()
   unId: string;
