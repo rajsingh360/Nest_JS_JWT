@@ -186,7 +186,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"unId\":\"12345\",\r\n    \"title\":\"check\",\r\n    \"preiviewUri\":\"preiviewUri.png\",\r\n    \"component\":\"ABC\",\r\n    \"status\":\"PUBLISH\"\r\n}",
+					"raw": "{\r\n    \"title\":\"check\",\r\n    \"preiviewUri\":\"preiviewUri.png\",\r\n    \"component\":\"ABC\",\r\n    \"status\":\"PUBLISH\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -205,6 +205,51 @@
 						"v1",
 						"template",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllTemplates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/template/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"template",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/template/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"template",
+						"id",
+						"1"
 					]
 				}
 			},

@@ -12,8 +12,10 @@ import { User } from './users/user.entity';
 import { CategoryModule } from './category/category.module';
 import { CategoryEntity } from './category/category.entity';
 import { SubCategoryEntity } from './category/sub-category.entity';
+import { TemplateEntity } from './template/template.entity';
+import { TemplateModule } from './template/template.module';
 
-const entities = [User, CategoryEntity, SubCategoryEntity];
+const entities = [User, CategoryEntity, SubCategoryEntity, TemplateEntity];
 
 @Module({
   imports: [
@@ -30,6 +32,7 @@ const entities = [User, CategoryEntity, SubCategoryEntity];
       entities: entities,
       synchronize: true,
     }),
+    TemplateModule,
     CategoryModule,
     UsersModule,
     AuthModule,
