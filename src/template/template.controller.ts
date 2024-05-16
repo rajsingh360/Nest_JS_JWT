@@ -18,7 +18,7 @@ export class TemplateController {
   //   return this.templateService.findById(+id);
   // }
   
-  @Post('/create')
+  @Post('/save')
   async create(@Body() templateDto: CreateTemplateDto) {
     //console.log('template1231232131');
     try {
