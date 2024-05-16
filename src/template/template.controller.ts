@@ -33,11 +33,25 @@ export class TemplateController {
   //   return this.templateService.findById(+id);
   // }
   
-  @Post('/create')
-  create(@Body() templateDto: CreateTemplateDto) {
+  @Post('/save')
+  async create(@Body() templateDto: CreateTemplateDto) {
     //console.log('template1231232131');
-    return this.templateService.create(templateDto);
+    try {
+      const response = await this.templateService.create(templateDto);;
+      return {
+        message: 'Template Saved Successfully.',
+        status: true,
+        data: response
+      };
+    } catch (error) {
+      // Handle any errors that might occur during fetching categories
+      return {
+        message: "Template dosn't saved.",
+        status: false,
+        error: error.message // Assuming error message is useful for debugging
+      };
   }
+}
   // create(@Req() request: Request) {
   //   const requestBody = request.body;
   //   //console.log('template1231232131');
