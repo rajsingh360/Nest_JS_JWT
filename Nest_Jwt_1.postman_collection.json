@@ -186,7 +186,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"check\",\r\n    \"preiviewUri\":\"preiviewUri.png\",\r\n    \"component\":\"ABC\",\r\n    \"status\":\"PUBLISH\"\r\n}",
+					"raw": "{\r\n    \"title\":\"checkbyvishal\",\r\n    \"preiviewUri\":\"checkbyvishal-preiviewUri.png\",\r\n    \"component\":\"ABC-checkbyvishal\",\r\n    \"status\":\"PUBLISH\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -250,6 +250,37 @@
 						"template",
 						"id",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateTemplate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"title\":\"checkbyvishal-123\",\r\n    \"preiviewUri\":\"checkbyvishal-preiviewUri.png\",\r\n    \"component\":\"ABC-checkbyvishal\",\r\n    \"status\":\"PUBLISH\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/template/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"template",
+						"update"
 					]
 				}
 			},

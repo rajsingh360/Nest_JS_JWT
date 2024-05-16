@@ -4,6 +4,7 @@ import { Repository, InsertResult, Like } from 'typeorm';
 import { TemplateEntity } from './template.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTemplateDto } from './dto/create-template.dto';
+import { UpdateTemplateDto } from './dto/update-template.dto';
 
 @Injectable()
 export class TemplateService {
@@ -13,7 +14,15 @@ export class TemplateService {
     private readonly templateRepository: Repository<TemplateEntity>
   ) {}
   
+  async findOne(querydata): Promise<TemplateEntity> {   
+    return await this.templateRepository.findOne({
+      where: querydata,
+    });
+  }
 
+  // async createOrUpdate(templateDto: CreateTemplateDto) {
+
+  // }
 
   async create(templateDto: CreateTemplateDto) {
     console.log(templateDto);
@@ -32,30 +41,21 @@ export class TemplateService {
   async findAll(): Promise<TemplateEntity[]> {
     return await this.templateRepository.find();
   }
-
-  // async findById(id: string): Promise<TemplateEntity> {
-  //   const template = await this.templateRepository.findOne(id);
-  //   if (!template) {
-  //     throw new NotFoundException(`Template with ID ${id} not found`);
-  //   }
-  //   return template;
-  // }
-
   
-  // async updateTemplate(templateDto: UpdateTemplateDto, authUser : any) {    
+  async updateTemplate(templateDto: UpdateTemplateDto) {    
 
-  //   let template = await this.findOne({id:templateDto.id});
-  //   console.log(entity);
-  //   template.unId = randomString;
-  //   template.title = templateDto.title;
-  //   template.preiviewUri = templateDto.preiviewUri;
-  //   template.component = templateDto.component;
-  //   template.status = templateDto.status;
-  //   return await this.templateRepository.save(template);
+    let template = await this.findOne({id:templateDto.id});
+    //console.log(template);
+    //template.unId = randomString;
+    template.title = templateDto.title;
+    template.preiviewUri = templateDto.preiviewUri;
+    template.component = templateDto.component;
+    template.status = templateDto.status;
+    return await this.templateRepository.save(template);
     
   
   
-  // }
+  }
 
 
   private generateRandomString(length: number): string {
