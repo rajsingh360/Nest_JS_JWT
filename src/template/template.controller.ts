@@ -8,9 +8,24 @@ export class TemplateController {
   constructor(private readonly templateService: TemplateService) {}
 
   @Get('/')
-  async findAll(): Promise<TemplateEntity[]> {
-    return this.templateService.findAll();
+  async findAll(){
+    try {
+      const response = await this.templateService.findAll();
+      return {
+        message: 'Success',
+        status: true,
+        data: response
+      };
+    } catch (error) {
+      // Handle any errors that might occur during fetching categories
+      return {
+        message: 'Error',
+        status: false,
+        error: error.message // Assuming error message is useful for debugging
+      };
+    }
   }
+  
 
   // @Get('id/:id')
   // async findById(@Param('id') id: string): Promise<TemplateEntity> {
