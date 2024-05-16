@@ -21,13 +21,13 @@ export class TemplateEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true, default: '' })
   unId: string;
 
   @Column()
   title: string;
 
-  @Column()
+  @Column({ nullable: true, default: '' })
   preiviewUri: string;
 
   @Column()
@@ -36,7 +36,7 @@ export class TemplateEntity extends BaseEntity {
   @Column({
     type: 'enum',
     enum: StatusType,
-    default: StatusType.PUBLISH, // Optional: Set a default value
+    default: StatusType.DRAFT, // Optional: Set a default value
   })
   status: StatusType;
 

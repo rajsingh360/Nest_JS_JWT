@@ -24,18 +24,37 @@ export class TemplateService {
 
   // }
 
-  async create(templateDto: CreateTemplateDto) {
-    console.log(templateDto);
-    const template = new TemplateEntity();
-    // Generate random string
-    const randomString = this.generateRandomString(20); // Change 10 to the desired length of the random string
+  // async create(templateDto: CreateTemplateDto) {
+  //   console.log(templateDto);
+  //   const template = new TemplateEntity();
+  //   // Generate random string
+  //   const randomString = this.generateRandomString(20); // Change 10 to the desired length of the random string
 
-    template.unId = randomString;
-    template.title = templateDto.title;
-    template.preiviewUri = templateDto.preiviewUri;
-    template.component = templateDto.component;
-    template.status = templateDto.status;
-    return await this.templateRepository.save(template);
+  //   template.unId = randomString;
+  //   template.title = templateDto.title;
+  //   template.preiviewUri = templateDto.preiviewUri;
+  //   template.component = templateDto.component;
+  //   template.status = templateDto.status;
+  //   return await this.templateRepository.save(template);
+  // }
+
+  async create(templateDto: CreateTemplateDto): Promise<TemplateEntity> {
+    const { unId } = templateDto;
+    let template: TemplateEntity;
+
+    if (unId) {
+      // Check if the template exists
+      template = await this.templateRepository.findOne({ where: { unId } });
+      if (template) {
+        // Update existing template
+        Object.assign(template, templateDto);
+        return this.templateRepository.save(template);
+      }
+    }
+    // Create new template if it does not exist
+    template = this.templateRepository.create(templateDto);
+    template.unId = this.generateRandomString(20); // Initialize unId here
+    return this.templateRepository.save(template);
   }
 
   async findAll(): Promise<TemplateEntity[]> {
